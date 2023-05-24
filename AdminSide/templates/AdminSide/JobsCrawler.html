@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'UserStatics/css/bootstrap.min.css' %}" rel="stylesheet">
+    <title>Crawler </title>
+</head>
+<body>
+    <div class="container mt-4">
+        <div class="alert alert-primary"> <strong>Congratulations !</strong>  Your crawler has stopped after completing it's work </div>
+        <a href="{% url 'AdminHome' %}" class="btn btn-primary" style="border-radius: 5px;">Dashboard</a>
+        <!-- <h4> <span style="color: navy;font-weight: 600;">Congratulations</span> ! Your crawler has stopped after completing it's work </h4> -->
+    </div>
+</body>
+</html>

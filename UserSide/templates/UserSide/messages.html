@@ -1,0 +1,21 @@
+<style>
+.messages li.error{
+    color: red;
+}
+.messages li.info{
+    color: RGB(23, 162, 184);
+}
+.messages li.success{
+    color: RGB(40, 167, 69);
+}
+.messages li.warning{
+    color: RGB(255, 193, 7);
+}
+</style>
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags}}" {% endif %}>{{message}}</li>
+    {% endfor %}
+</ul>
+{% endif %}

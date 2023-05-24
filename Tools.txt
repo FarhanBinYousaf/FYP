@@ -1,0 +1,38 @@
+******* For Making OCR *******
+
+Tesseract 	=> To convert image to string
+Pytesseract	=> Enables you to use Tesseract
+OpenCV 	=> Image processing library to pre-process image 
+
+
+***** For Scraping ******
+BeautifulSoup  => For web scraping, and parse XML and HTML 
+Request 	=> Used for making HTTP request to targeted website
+
+***** Password Encryption ***** 
+PBKDF2(Password Based Key Derivation Function 2) with SHA-256(Secure Hash Algorithm) has funciton.
+Iteration : 120,000
+bits : 256
+Direction: One Way 
+
+
+***** Superuser *****
+username : joberz
+passwor  : 1234
+
+**** Admin Home Login *****
+username : jobberz
+password : Haier@1234
+
+**** User Side Login *****
+Email : testuser@gmail.com
+Password : 12345678
+
+
+
+**** Recommendation System ***** 
+***************** Data Cleaning ************
+Pandas 
+NLP => Lemitization => Don't take duplication 
+
+

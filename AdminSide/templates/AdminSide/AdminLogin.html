@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Admin Login</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/typicons.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/animate.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+	<script type="text/javascript" src="{% static 'js/S6Ptkwu_qA.js' %}"></script>
+</head>
+<body id="particles-js">
+	<div class="animated bounceInDown">
+		<div class="container">
+			<span class="error animated tada" id="msg"></span>
+			<form name="form1" method="POST" class="box" onsubmit="return checkStuff()">
+				{% csrf_token %}
+				<h4>Admin<span> Dashboard</span></h4>
+				<h5>Sign in to your account.</h5>
+				<input type="text" name="AdminUsername" placeholder="Username" autocomplete="off">
+				<i class="typcn typcn-eye" id="eye"></i>
+				<input type="password" name="AdminPassword" placeholder="Passsword" id="pwd" autocomplete="off">
+				<a href="{% url 'password_reset' %}" class="forgetpass">Forget Password?</a>
+				<p style="color: red;">{% if error %}{{error}}{% endif %}</p>
+				<input type="submit" value="Sign in" class="btn1">
+			</form>
+		</div> 
+	</div>
+	<script type="text/javascript" src="{% static 'js/js.js' %}"></script>
+</body>
+</html>

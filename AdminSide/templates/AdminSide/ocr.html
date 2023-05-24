@@ -1,0 +1,37 @@
+{% extends 'main.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+	<div class="container">
+		<div class="row mt-3">
+			<div class="col-md-2"></div>
+			<div class="col-md-8">
+                <div class="alert alert-success"><strong>Make your jobs images text</strong></div>
+				<form method="POST" action="{% url 'jobsOCR' %}" enctype="multipart/form-data" >
+					{% csrf_token %}
+                    <input type="file" class="form-control mb-3" name="img">
+					<button type="submit" class="btn btn-primary mb-3">Make OCR</button>
+				</form>				    
+				{% include 'UserSide/messages.html' %}
+				<hr>
+                <form method="POST"  action="{% url 'ocrData' %}">
+                    {% csrf_token %}
+					<label for="">Job Title</label>
+					<input type="text" name="job_title" placeholder="Job Title" value="{{title}}" class="form-control mb-3" >
+					<label for="">Job Location</label>
+					<input type="text" name="job_location" placeholder="Job Location" value="{{location}}" class="form-control mb-3" >
+					<label for="">Job Organization</label>
+					<input type="text" name="job_organization" placeholder="Job Organization" value="{{organization}}" class="form-control mb-3" >
+					<label for="">Job Contact</label>
+					<input type="text" name="job_contact" placeholder="Job Contact" value="{{Contact}}" class="form-control mb-3" >
+					<label for="">Job Link</label>
+					<input type="text" name="job_link" placeholder="Job Link" value="{{Link}}" class="form-control mb-3" >
+					<label for="">Date</label>
+					<input type="text" name="job_date" placeholder="Date" value="{{Date}}" class="form-control mb-3" >
+					<button type="submit" class="btn btn-primary mb-3">Use OCR</button>
+                </form>
+			</div>
+			<div class="col-md-2"></div>
+		</div>
+		
+	</div>
+{% endblock content %}

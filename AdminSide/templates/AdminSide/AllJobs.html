@@ -1,0 +1,39 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+<div class="card border-0 shadow mb-4 mt-4">
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-centered table-nowrap mb-0 rounded" id="jobsTable">
+            <thead class="thead-light">
+              <tr>
+                <th class="border-0 rounded-start">#</th>
+                <th class="border-0">Title</th>
+                <th class="border-0">Category</th>
+                <th class="border-0">Company</th>
+                <!-- <th class="border-0">Date</th> -->
+                <th class="border-0">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for jobs in JobsAll %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{jobs.Title}}</td>
+                    <td>{{jobs.Category}}</td>
+                    <td>{{ jobs.Company }}</td>
+                    <!-- <td>{{ jobs. }}</td> -->
+                    <td> <form action="{% url 'DeleteJob' jobs.id %}" method="POST" onsubmit="return confirm('Are you sure you want to delete this job?')">{% csrf_token %}<button class="btn btn-danger">Delete</button></form></td>
+                </tr>    
+                {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+<script>
+    let table = new DataTable('#jobsTable');
+</script>
+    
+{% endblock content %}

@@ -1,0 +1,8 @@
+Superuser
+username: jobberz
+password: Haier@1234
+
+
+Admin Staff
+username : Harryclari	
+password : Test@1234
