@@ -1,0 +1,15 @@
+Project Title : 	Jobs Recommendation System 
+Group Members:		Farhan Yousaf   BCSF19E027
+			Fatima Abid     BCSF19E031
+			Ali Hassan      BCSF19E021
+
+Project Summary:
+		We are currently developing a sophisticated Jobs Recommendation System called Jobberz using the Django framework. The main objective of this system is to provide a comprehensive platform where job seekers no longer need to individually access various job listing websites. Jobberz consolidates all the necessary functionalities into a single, convenient platform.
+
+Jobberz consists of three key modules. Firstly, we utilize web scraping techniques using BeautifulSoup and Selenium in Python to gather job data from prominent job holding websites such as indeed.com and careerokay. We then employ Pandas to clean and process this data effectively.
+
+Secondly, we implement Optical Character Recognition (OCR) technology using Pytesseract,Tesseract and OpenCV to extract text from job postings presented in image format. This ensures that users do not have to access each image individually, enhancing the overall user experience.
+
+Lastly, we integrate a robust Recommendation System that utilizes NLP to analyze user data, including qualifications, skills, and other relevant information. Based on this analysis, Jobberz provides personalized job recommendations to each user. Additionally, we organize jobs on the website by category and company, making it easier for users to navigate and find suitable opportunities.
+
+By leveraging these three modules, Jobberz aims to revolutionize the job search process by offering a comprehensive, user-friendly platform that streamlines the job hunting experience.

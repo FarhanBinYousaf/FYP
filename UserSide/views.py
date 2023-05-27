@@ -3,6 +3,7 @@ from UserSide.models import JobSeeker,ContactUs
 from UserSide.forms import UserRegistrationForm
 from django.contrib.auth.hashers import make_password,check_password
 from django.contrib import messages
+from django.db.models import Q
 from django.contrib.auth.password_validation import validate_password,CommonPasswordValidator
 from django.core.exceptions import ValidationError
 from django.contrib.auth import login,logout
@@ -13,10 +14,25 @@ from django.core.paginator import Paginator
 # Create your views here.
 
 def Index(request):
+	job_query = request.GET.get('job_query')				# getting search_title from input field for searching
+	if job_query:
+		return redirect('search_job',query=job_query)		# Passing that title / query to query string 
+	jobs = Jobs.objects.all()[:5]
 	Categories = Category.objects.all()[:8]
 	Companies = Company.objects.all()[:8]
-	context = {'Categories':Categories,'Companies':Companies}
+	context = {'Categories':Categories,'Companies':Companies,'jobs':jobs}
 	return render(request,'UserSide/index.html',context)
+
+def search_result(request,query):
+	error = ""
+	jobs_list = []
+	if query:
+		jobs_list = Jobs.objects.filter(Q(Title__icontains=query))			# Applying Django Q technique to search through Title of job
+	else:
+		error = "Sorry"
+		# print(jobs_list)
+	context = {'jobs_list':jobs_list,'error':error}
+	return render(request,'UserSide/search_job.html',context)
 
 def UserRegister(request):
 	if request.method  == "POST":

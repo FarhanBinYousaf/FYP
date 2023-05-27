@@ -14,4 +14,5 @@ urlpatterns = [
     path('catJob/<str:pk>/',views.CatJob,name="catJob"),
     path('compJob/<str:pk>/',views.CompanyJob,name="compJob"),
     path('OCRjobs',views.ocrJobs,name="OCRjobs"),
+    path('search_job/<str:query>/',views.search_result,name="search_job"),
 ]
