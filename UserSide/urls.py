@@ -12,6 +12,7 @@ urlpatterns = [
     path('categories',views.AllCategories,name="categories" ),
     path('contact',views.Contact,name="contact"),
     path('catJob/<str:pk>/',views.CatJob,name="catJob"),
+    path('ocrCatJob/<str:pk>/',views.ocrCatJob,name="ocrCatJob"),
     path('compJob/<str:pk>/',views.CompanyJob,name="compJob"),
     path('OCRjobs',views.ocrJobs,name="OCRjobs"),
     path('search_job/<str:query>/',views.search_result,name="search_job"),

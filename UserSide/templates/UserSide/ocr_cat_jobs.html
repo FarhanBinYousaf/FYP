@@ -1,0 +1,76 @@
+{% extends 'userMain.html' %} {% load static %} {% block content %}
+<!-- Jobs Start -->
+<!-- <div class="container-xxl py-5"> -->
+<div class="container">
+    <!-- <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Job Listing</h1> -->
+    <div class="job-item p-4 mb-4 mt-4">
+        <div class="row g-4">
+            <h5>Jobs in Pakistan - Latest Jobs 2023</h5>
+            <p>
+                "Discover Jobs in Pakistan with Ease: Experience effortless job searching in Pakistan with our advanced OCR technology. Find jobs online and explore today's latest opportunities from companies in Pakistan"
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card" style="background-color: #effdf5">
+                <div class="card-header">Job Categories</div>
+                <ul class="list-group list-group-flush">
+                    {% for category in categories %}
+                    <li class="list-group-item" style="background-color: #effdf5">
+                        <a href="{% url 'ocrCatJob' category.id %}">{{category.Name}}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="tab-class text-center wow fadeInUp" data-wow-delay="0.3s">
+                <div class="tab-content">
+                    <div id="tab-1" class="tab-pane fade show p-0 active">
+                        {% for job in jobs %}
+                        <div class="job-item p-4 mb-4">
+                            <div class="row g-4">
+                                <div class="col-sm-12 col-md-8 d-flex align-items-center">
+                                    <div class="text-start ps-4">
+                                        <a href="">
+                                            <h5 class="mb-3">{{job.Title}}</h5>
+                                        </a>
+                                        <span class="text-truncate me-3">
+                                            <i class="fa fa-map-marker-alt text-primary me-2"></i>{{job.Location}}
+                                        </span>
+                                        <span class="text-truncate me-3"><i
+                                                class="far fa-clock text-primary me-2"></i>{{job.Date}}
+                                        </span>
+                                        <span class="text-truncate me-0"><i
+                                                class="far fa-money-bill-alt text-primary me-2"></i>{{job.Organization}}
+                                        </span>
+                                    </div>
+                                </div>
+                                <div
+                                    class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
+                                    <div class="d-flex mb-3">
+                                        <a class="btn btn-light btn-square me-3" href=""></a>
+                                        {% if job.Link %}
+                                        <p><a href="https://{{ job.Link }}" class="btn btn-primary">Detail </a></p>
+                                        {% else %}
+                                        <p>{{job.Contact}}</p>
+                                        {% endif %}
+                                    </div>
+                                 <!--    <small class="text-truncate"><i
+                                            class="far fa-calendar-alt text-primary me-2"></i>Date
+                                        Line: 01 Jan, 2045</small> -->
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% include 'UserSide/footer.html' %}
+<!-- </div> -->
+<!-- Jobs End -->
+{% endblock content %}

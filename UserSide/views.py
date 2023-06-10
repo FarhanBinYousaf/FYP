@@ -119,6 +119,13 @@ def CatJob(request,pk):
 	context = {'categories':categories, 'jobs':jobs}
 	return render(request,'UserSide/category_job.html',context)
 
+def ocrCatJob(request,pk):
+	categories = Category.objects.all()
+	Cat = Category.objects.get(id=pk)
+	jobs = OCRJobs.objects.filter(Category=Cat)
+	context = {'jobs':jobs,'categories':categories}
+	return render(request,'UserSide/ocr_cat_jobs.html',context)
+
 def CompanyJob(request,pk):
 	AllCompanies = Company.objects.all()
 	Comp = Company.objects.get(id=pk)
@@ -139,10 +146,11 @@ def JobDetail(request,pk):
 	return render(request,'UserSide/job_detail.html',context)
 
 def ocrJobs(request):
+	categories = Category.objects.all()
 	Link = ""
 	Contact = ""
 	ocrjobs = OCRJobs.objects.all()
-	context = {'ocrjobs':ocrjobs}
+	context = {'ocrjobs':ocrjobs,'categories':categories}
 	return render(request,'UserSide/ocrjobs.html',context)
 
 def Contact(request):

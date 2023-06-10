@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect,HttpResponse
 from .forms import CustomUserCreationForm, UpdateUser
 from django.contrib.auth import login, authenticate, logout
+from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib import messages
@@ -293,6 +294,7 @@ def generateFile(request):
     return response
 
 def JobsOCR(request):
+	categories = Category.objects.all()
 	title = ""
 	location = ""
 	organization = ""
@@ -350,11 +352,13 @@ def JobsOCR(request):
 		else:
 		    Date = ""
 
-	context = {'title':title,'location':location,'organization':organization,'Link':Link,'Contact':Contact,'Date':Date}
+	context = {'categories':categories,'title':title,'location':location,'organization':organization,'Link':Link,'Contact':Contact,'Date':Date}
 	return render(request,'AdminSide/ocr.html',context)
 
 def OCRData(request):
 	if request.method == "POST":
+		Job_Category_id = request.POST['jobCategory']
+		job_category = get_object_or_404(Category, id=Job_Category_id)
 		Job_Title = request.POST['job_title']
 		Location = request.POST['job_location']
 		Organization = request.POST['job_organization']
@@ -362,7 +366,7 @@ def OCRData(request):
 		Contact = request.POST['job_contact']
 		Date = request.POST['job_date']
 		if Job_Title:
-			OCRJobs.objects.create(Title=Job_Title,Location=Location,Organization=Organization,Link=Link,Contact=Contact,Date=Date)
+			OCRJobs.objects.create(Category=job_category,Title=Job_Title,Location=Location,Organization=Organization,Link=Link,Contact=Contact,Date=Date)
 			messages.success(request,'Congratulations! OCR has been successfully')
 		else:
 			print("Something went wrong")

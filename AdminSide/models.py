@@ -37,6 +37,7 @@ class Category(models.Model):
 
 
 class OCRJobs(models.Model):
+    Category = models.ForeignKey(Category,null=True,on_delete=models.CASCADE)
     Title = models.CharField(max_length=50,null=True,blank=True)
     Location = models.CharField(max_length=50,null=True,blank=True)
     Organization = models.CharField(max_length=50,null=True,blank=True)

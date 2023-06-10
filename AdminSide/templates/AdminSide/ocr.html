@@ -15,6 +15,13 @@
 				<hr>
                 <form method="POST"  action="{% url 'ocrData' %}">
                     {% csrf_token %}
+					<label for="">Job Category </label>
+					<select name="jobCategory" id="" class="form-control">
+						<option value="">-- Select Category --</option>
+						{% for category in categories %}
+						<option value="{{category.id}}" >{{category.Name}}</option>
+						{% endfor %}
+					</select>
 					<label for="">Job Title</label>
 					<input type="text" name="job_title" placeholder="Job Title" value="{{title}}" class="form-control mb-3" >
 					<label for="">Job Location</label>
