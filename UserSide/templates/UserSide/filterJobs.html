@@ -1,0 +1,78 @@
+{% extends 'userMain.html' %} {% load static %} {% block content %}
+
+<div class="container">
+    <div class="job-item p-4 mb-4 mt-4 shadow-lg">
+        <div class="row g-4">
+            <h5>Jobs in Pakistan - Latest Jobs 2023</h5>
+            <p>
+                Please narrow down the selection criteria to ensure optimal alignment with your desired specifications, resulting in the identification of the most appropriate and compatible match within the given context.
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <form action="" method="POST">
+                {% csrf_token %}
+                <label for="qualification" class="form-label" style="color: black;">Qualification</label>
+                <input type="text" class="form-control" name="qualification" id="qualification" placeholder="e.g BSCS">
+                <label for="skills" class="form-label mt-2" style="color: black;">Skills</label>
+                <input type="text" class="form-control" name="skills" id="skills" placeholder="e.g Development">
+                <label for="experience" class="form-label mt-2" style="color: black;">Experience</label>
+                <input type="text" class="form-control" name="experience" id="experience" placeholder="e.g 3 years">
+                <button class="btn btn-success  mt-4">Filter Data <i
+                    class="fa fa-filter ms-3"></i></button>
+            </form>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                {% for title, location,Category,Qualification,Experience in zipped_jobs %}
+                <div id="tab-1" class="tab-pane fade show p-0 active">
+                    <div class="job-item p-4 mb-4 shadow-lg">
+                        <div class="row g-4">
+                            <div class="col-sm-12 col-md-8 d-flex align-items-center">
+                                <div class="text-start ps-4">
+                                    <a href="">
+                                        <h5 class="mb-3">{{title}}</h5>
+                                    </a>
+                                    <span class="text-truncate me-3">
+                                        <i class="fa fa-map-marker-alt text-primary me-2"></i>{{location}}
+                                    </span>
+                                    <span class="text-truncate me-3"><i
+                                            class="far fa-clock text-primary me-2"></i>{{Category}}
+                                    </span>
+                                    <span class="text-truncate me-0"><i
+                                            class="far fa-money-bill-alt text-primary me-2"></i>{{Qualification}}
+                                    </span>
+                                </div>
+                            </div>
+                            <div
+                                class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
+                                <div class="d-flex mb-3">
+                                    <a class="btn btn-light btn-square me-3" href=""></a>
+                                    <a class="btn btn-primary" href="">Apply Now</a>
+                                </div>
+                                <!-- <small class="text-truncate"><i
+                                        class="far fa-calendar-alt text-primary me-2"></i>Date
+                                    Line: 01 Jan, 2045
+                                </small> -->
+                            </div>
+                        </div>
+                    </div>                
+                </div>
+            {% endfor %}
+            </div>
+            <!-- <div class="col-md-3"></div> -->
+        </div>
+       
+        <div class="col-md-2"></div>
+    </div>
+</div>
+
+
+
+
+
+{% include 'UserSide/footer.html' %}
+{% endblock content %}
