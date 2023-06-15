@@ -17,4 +17,9 @@ urlpatterns = [
     path('OCRjobs',views.ocrJobs,name="OCRjobs"),
     path('search_job/<str:query>/',views.search_result,name="search_job"),
     path('filter_jobs',views.filterJobs,name="filter_jobs"),
+    path('recomJob/<str:pk>/',views.recoJob,name="recomJob"),
+    path('forgetPassword',views.forgetPassword,name="forgetPassword"),
+    path('OTP',views.OTP,name="OTP"),
+    path('NewPassword',views.NewPassword,name="NewPassword"),
+    
 ]

@@ -1,11 +1,11 @@
 from django.shortcuts import render, redirect,HttpResponse
-from .forms import CustomUserCreationForm, UpdateUser
+from .forms import CustomUserCreationForm, UpdateUser,CategoryFrom
 from django.contrib.auth import login, authenticate, logout
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib import messages
-from UserSide.models import JobSeeker
+from UserSide.models import JobSeeker,ContactUs
 from .models import Jobs, Category, Company, Jobs,OCRJobs
 import requests
 from bs4 import BeautifulSoup
@@ -293,6 +293,8 @@ def generateFile(request):
         writer.writerow([job.Title,job.Link,job.Company,job.Location,job.Experience,job.Salary,job.Time,job.ApplyLink,job.Category,job.CareerLevel,job.Qualification,job.Vacancies,job.Description,job.Skills])
     return response
 
+
+@login_required(login_url="AdminLogin")
 def JobsOCR(request):
 	categories = Category.objects.all()
 	title = ""
@@ -355,6 +357,8 @@ def JobsOCR(request):
 	context = {'categories':categories,'title':title,'location':location,'organization':organization,'Link':Link,'Contact':Contact,'Date':Date}
 	return render(request,'AdminSide/ocr.html',context)
 
+
+@login_required(login_url="AdminLogin")
 def OCRData(request):
 	if request.method == "POST":
 		Job_Category_id = request.POST['jobCategory']
@@ -371,6 +375,35 @@ def OCRData(request):
 		else:
 			print("Something went wrong")
 	return render(request,'AdminSide/ocr.html')
+
+@login_required(login_url="AdminLogin")
+def AddCategory(request):
+	category = CategoryFrom()
+	if request.method == "POST":
+		category = CategoryFrom(request.POST)
+		if category.is_valid():
+			category.save()
+			messages.success(request,"Category is added successfully")
+
+	context = {'category':category}
+	return render(request,'AdminSide/AddCategory.html',context)
+
+@login_required(login_url="AdminLogin")
+def AllCategories(request):
+	Categories = Category.objects.all()
+	context = {'categories':Categories}
+	return render(request,'AdminSide/AllCategories.html',context)
+
+@login_required(login_url="AdminLogin")
+def DeleteCategory(request,pk):
+	category = Category.objects.get(id=pk)
+	category.delete()
+	return redirect(request.META.get('HTTP_REFERER'))
+
+def contacts(request):
+	contacts = ContactUs.objects.all()
+	context = {'contacts':contacts}
+	return render(request,'AdminSide/contacts.html',context)
 def practice(request):
 	active_users = User.objects.filter(is_active=True).count()
 	context = {'active_users':active_users}

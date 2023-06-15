@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
 from django.contrib.auth.forms import UserChangeForm
+from .models import Category
 
 class CustomUserCreationForm(UserCreationForm):
 	email = forms.EmailField(required=True)
@@ -22,3 +23,9 @@ class UpdateUser(UserChangeForm):
 	class Meta:
 		model = User
 		fields = ['first_name','last_name','username','email','new_password1','new_password2']
+
+
+class CategoryFrom(forms.ModelForm):
+	class Meta:
+		model = Category
+		fields = '__all__'

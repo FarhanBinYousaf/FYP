@@ -25,7 +25,7 @@ username : jobberz
 password : Haier@1234
 
 **** User Side Login *****
-Email : testuser@gmail.com
+Email : mfarhanyousaf68@gmail.com
 Password : 12345678
 
 
@@ -34,5 +34,9 @@ Password : 12345678
 ***************** Data Cleaning ************
 Pandas 
 NLP => Lemitization => Don't take duplication 
+Lemitization
+TFIDF => Vector
+Cosin similarity => Cosin similarity
+
 
 

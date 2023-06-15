@@ -1,5 +1,0 @@
-PBKDF2(Password Based Key Derivation Function 2) with SHA-256(Secure Hash Algorithm) has funciton.
-Iteration : 120,000
-bits : 256
-Direction: One Way 
-

@@ -1,0 +1,33 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+<a href="{% url 'category' %}" class="btn btn-primary">Add New</a>
+<div class="card border-0 shadow mb-4 mt-4">
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-centered table-nowrap mb-0 rounded" id="jobsTable">
+            <thead class="thead-light">
+              <tr>
+                <th class="border-0 rounded-start">#</th>
+                <th class="border-0 rounded-start">Category</th>
+                <th class="border-0 rounded-start">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for category in categories %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ category.Name }}</td>
+                    <td><form action="{% url 'deleteCategory' category.id %}" method="POST" onsubmit="return confirm('Are you sure you want to delete the selected category?')">{% csrf_token %}<button class="btn btn-danger">Delete</button></form></td>
+                </tr>    
+                {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+<script>
+    let table = new DataTable('#jobsTable');
+</script>
+    
+{% endblock content %}

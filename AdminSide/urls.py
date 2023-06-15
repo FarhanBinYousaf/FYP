@@ -19,5 +19,9 @@ urlpatterns = [
     path('DeleteJob/<str:pk>/',views.DeleteJob,name="DeleteJob"),
     path('generateFile',views.generateFile,name="generateFile"),
     path('jobsOCR',views.JobsOCR,name="jobsOCR"),
-    path('ocrData',views.OCRData,name="ocrData",)
+    path('ocrData',views.OCRData,name="ocrData"),
+    path('category',views.AddCategory,name="category"),
+    path('allCategories',views.AllCategories,name="allCategories"),
+    path('deleteCategory/<str:pk>/',views.DeleteCategory,name="deleteCategory"),
+    path('contacts',views.contacts,name="contacts"),
 ]

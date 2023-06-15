@@ -1,4 +1,6 @@
 from django.db import models
+from django.utils import timezone
+
 # Create your models here.
 
 class JobSeeker(models.Model):
@@ -18,4 +20,13 @@ class ContactUs(models.Model):
 
     def __str__(self):
         return self.Email
+    
+class PasswordResetOTP(models.Model):
+    Job_seeker = models.ForeignKey(JobSeeker,on_delete=models.CASCADE,null=True)
+    OTP = models.IntegerField()
+    created_at = models.DateTimeField(default=timezone.now)
+    expires_at = models.DateTimeField()
+
+    def is_expired(self):
+        return timezone.now() > self.expires_at
 
